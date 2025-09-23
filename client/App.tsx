@@ -19,6 +19,7 @@ import Events from "./pages/Events";
 import Admissions from "./pages/Admissions";
 import Contact from "./pages/Contact";
 import StudentResources from "./pages/StudentResources";
+import AdmissionForm from "./pages/AdmissionForm";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
             <Route path="/campus-tour" element={<CampusTour />} />
             <Route path="/events" element={<Events />} />
             <Route path="/admissions" element={<Admissions />} />
+            <Route path="/admissions/apply" element={<AdmissionForm />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/resources" element={<StudentResources />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
