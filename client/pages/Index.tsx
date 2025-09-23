@@ -8,22 +8,31 @@ const heroImages = [
   "https://images.unsplash.com/photo-1511452885600-a3d2c9148a31?q=80&w=1600&auto=format&fit=crop",
 ];
 
-const courses = [
+const ugCourses = [
   { title: "B.Tech (CSE)", desc: "AI, ML, Data Science, Cybersecurity" },
   { title: "BBA", desc: "Business Analytics, Marketing, Finance" },
   { title: "BCA", desc: "Full-Stack Development, Cloud, DevOps" },
-  { title: "MBA", desc: "Leadership, Strategy, Entrepreneurship" },
-  { title: "BA (H) Psychology", desc: "Counseling, Research, HR" },
-  { title: "B.Sc (IT)", desc: "Networks, Programming, Systems" },
 ];
 
-const campusMedia = [
+const pgCourses = [
+  { title: "MBA", desc: "Leadership, Strategy, Entrepreneurship" },
+  { title: "MCA", desc: "Advanced Software, Cloud & Security" },
+  { title: "M.Sc (Data Science)", desc: "ML, Big Data, Visualization" },
+];
+
+const campusImages = [
   { cat: "Classrooms", url: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop" },
   { cat: "Library", url: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" },
   { cat: "Labs", url: "https://images.unsplash.com/photo-1551281044-8a5d2f6df31a?q=80&w=1200&auto=format&fit=crop" },
   { cat: "Hostels", url: "https://images.unsplash.com/photo-1505691723518-36a5ac3b2dba?q=80&w=1200&auto=format&fit=crop" },
   { cat: "Sports", url: "https://images.unsplash.com/photo-1471295253337-3ceaaedca402?q=80&w=1200&auto=format&fit=crop" },
   { cat: "Culture", url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop" },
+];
+
+const campusVideos = [
+  { title: "Campus Overview", id: "9No-FiEInLA" },
+  { title: "Student Life", id: "ysz5S6PUM-U" },
+  { title: "Facilities", id: "2V-20Qe4M8Y" },
 ];
 
 const events = {
@@ -131,7 +140,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Courses preview */}
+      {/* Courses preview (UG & PG) */}
       <section id="courses" className="scroll-mt-20 py-16 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between gap-4">
@@ -142,47 +151,77 @@ export default function Index() {
               <Link to="/courses" className="text-sm font-semibold">See all programs →</Link>
             </Reveal>
           </div>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {courses.map((c) => (
-              <motion.div key={c.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="rounded-xl border bg-card p-5 shadow-sm hover:shadow-md">
-                <h3 className="font-semibold text-primary">{c.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{c.desc}</p>
-              </motion.div>
-            ))}
+          <div className="mt-8 grid gap-10 lg:grid-cols-2">
+            <div>
+              <h3 className="text-lg font-semibold text-primary">Undergraduate</h3>
+              <div className="mt-4 grid gap-6 sm:grid-cols-2">
+                {ugCourses.map((c) => (
+                  <motion.div key={c.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="rounded-xl border bg-card p-5 shadow-sm hover:shadow-md">
+                    <h4 className="font-semibold text-foreground">{c.title}</h4>
+                    <p className="mt-1 text-sm text-muted-foreground">{c.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-primary">Postgraduate</h3>
+              <div className="mt-4 grid gap-6 sm:grid-cols-2">
+                {pgCourses.map((c) => (
+                  <motion.div key={c.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="rounded-xl border bg-card p-5 shadow-sm hover:shadow-md">
+                    <h4 className="font-semibold text-foreground">{c.title}</h4>
+                    <p className="mt-1 text-sm text-muted-foreground">{c.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Campus Tour */}
+      {/* Campus Tour - separate Images and Videos */}
       <section id="campus" className="scroll-mt-20 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
             <h2 className="text-3xl font-bold tracking-tight">Campus Tour</h2>
           </Reveal>
           <Reveal delay={0.05}>
-            <p className="mt-2 text-muted-foreground">Get a glimpse of classrooms, libraries, labs, hostels, and cultural/sports arenas.</p>
+            <p className="mt-2 text-muted-foreground">Explore our campus with curated images and videos highlighting key facilities and student life.</p>
           </Reveal>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {campusMedia.map((m) => (
-              <motion.figure key={m.cat} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="group overflow-hidden rounded-xl border bg-card shadow-sm">
-                <img src={m.url} alt={m.cat} className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                <figcaption className="p-3 text-sm text-muted-foreground">{m.cat}</figcaption>
-              </motion.figure>
-            ))}
-          </div>
-          <Reveal delay={0.05}>
-            <div className="mt-8 overflow-hidden rounded-xl border shadow-sm">
-              <div className="aspect-video w-full">
-                <iframe
-                  className="h-full w-full"
-                  src="https://www.youtube.com/embed/9No-FiEInLA?rel=0"
-                  title="Amity University Patna Campus Tour"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              </div>
+
+          <div className="mt-8">
+            <h3 className="text-lg font-semibold text-primary">Images</h3>
+            <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {campusImages.map((m) => (
+                <motion.figure key={m.cat} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="group overflow-hidden rounded-xl border bg-card shadow-sm">
+                  <img src={m.url} alt={m.cat} className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                  <figcaption className="p-3 text-sm text-muted-foreground">{m.cat}</figcaption>
+                </motion.figure>
+              ))}
             </div>
-          </Reveal>
+          </div>
+
+          <div className="mt-12">
+            <h3 className="text-lg font-semibold text-primary">Videos</h3>
+            <div className="mt-4 grid gap-6 sm:grid-cols-2">
+              {campusVideos.map((v) => (
+                <Reveal key={v.id}>
+                  <article className="overflow-hidden rounded-xl border shadow-sm">
+                    <div className="aspect-video w-full">
+                      <iframe
+                        className="h-full w-full"
+                        src={`https://www.youtube.com/embed/${v.id}?rel=0`}
+                        title={v.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-3 text-sm text-muted-foreground">{v.title}</div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
