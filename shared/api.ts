@@ -10,3 +10,23 @@
 export interface DemoResponse {
   message: string;
 }
+
+export interface AdmissionApplicationPayload {
+  fullName: string;
+  email: string;
+  phone: string;
+  dob: string; // ISO date
+  gender: "Male" | "Female" | "Other";
+  address: string;
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
+  level: "UG" | "PG";
+  program: string;
+  previousEducation: string; // summary
+  yearOfPassing: string;
+  guardianName: string;
+  guardianPhone: string;
+  statement: string;
+}

@@ -262,7 +262,7 @@ export default function Index() {
                 <p className="mt-1 text-primary-foreground/90">Scholarships available for meritorious students. Limited seats!</p>
               </div>
               <div className="flex md:justify-end">
-                <a href="mailto:admissions.patna@amity.edu" className="inline-flex items-center justify-center rounded-md bg-secondary px-5 py-3 text-sm font-semibold text-secondary-foreground shadow hover:bg-secondary/90">
+                <a href="/admissions/apply" className="inline-flex items-center justify-center rounded-md bg-secondary px-5 py-3 text-sm font-semibold text-secondary-foreground shadow hover:bg-secondary/90">
                   Start Your Application
                 </a>
               </div>
