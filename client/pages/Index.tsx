@@ -30,9 +30,12 @@ const campusImages = [
 ];
 
 const campusVideos = [
-  { title: "Campus Overview", id: "9No-FiEInLA" },
-  { title: "Student Life", id: "ysz5S6PUM-U" },
-  { title: "Facilities", id: "2V-20Qe4M8Y" },
+  { title: "Campus Walkthrough", url: "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+  { title: "Student Life Highlights", url: "https://media.w3.org/2010/05/bunny/trailer.mp4" },
+  { title: "Library & Labs", url: "https://media.w3.org/2010/05/bunny/movie.mp4" },
+  { title: "Sports Complex", url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+  { title: "Cultural Events", url: "https://media.w3.org/2010/05/video/movie_300.mp4" },
+  { title: "Campus Facilities", url: "https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4" },
 ];
 
 const events = {
@@ -204,17 +207,13 @@ export default function Index() {
             <h3 className="text-lg font-semibold text-primary">Videos</h3>
             <div className="mt-4 grid gap-6 sm:grid-cols-2">
               {campusVideos.map((v) => (
-                <Reveal key={v.id}>
+                <Reveal key={v.url}>
                   <article className="overflow-hidden rounded-xl border shadow-sm">
                     <div className="aspect-video w-full">
-                      <iframe
-                        className="h-full w-full"
-                        src={`https://www.youtube.com/embed/${v.id}?rel=0`}
-                        title={v.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                        loading="lazy"
-                      />
+                      <video className="h-full w-full" controls preload="metadata">
+                        <source src={v.url} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                     </div>
                     <div className="p-3 text-sm text-muted-foreground">{v.title}</div>
                   </article>
