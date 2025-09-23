@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Reveal from "@/components/Reveal";
 
 const heroImages = [
   "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1600&auto=format&fit=crop",
@@ -107,16 +108,24 @@ export default function Index() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="grid gap-8 lg:grid-cols-3">
             <div className="lg:col-span-1">
-              <h2 className="text-3xl font-bold tracking-tight">About Our Campus</h2>
-              <p className="mt-2 text-muted-foreground">Modern infrastructure | Experienced faculty | Industry-aligned curriculum</p>
+              <Reveal>
+                <h2 className="text-3xl font-bold tracking-tight">About Our Campus</h2>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="mt-2 text-muted-foreground">Modern infrastructure | Experienced faculty | Industry-aligned curriculum</p>
+              </Reveal>
             </div>
             <div className="lg:col-span-2 text-muted-foreground leading-relaxed">
-              <p>
-                Amity University Patna offers a vibrant academic ecosystem with cutting-edge labs, an extensive library, comfortable hostels, and dedicated spaces for sports and cultural activities. Our programs are designed to nurture leadership, research aptitude, and real-world skills.
-              </p>
-              <p className="mt-4">
-                We emphasize interdisciplinary learning, global exposure, and holistic development. Join a community that inspires innovation and shapes leaders of tomorrow.
-              </p>
+              <Reveal>
+                <p>
+                  Amity University Patna offers a vibrant academic ecosystem with cutting-edge labs, an extensive library, comfortable hostels, and dedicated spaces for sports and cultural activities. Our programs are designed to nurture leadership, research aptitude, and real-world skills.
+                </p>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="mt-4">
+                  We emphasize interdisciplinary learning, global exposure, and holistic development. Join a community that inspires innovation and shapes leaders of tomorrow.
+                </p>
+              </Reveal>
             </div>
           </motion.div>
         </div>
@@ -126,8 +135,12 @@ export default function Index() {
       <section id="courses" className="scroll-mt-20 py-16 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between gap-4">
-            <h2 className="text-3xl font-bold tracking-tight">Courses Offered</h2>
-            <Link to="/courses" className="text-sm font-semibold">See all programs →</Link>
+            <Reveal>
+              <h2 className="text-3xl font-bold tracking-tight">Courses Offered</h2>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <Link to="/courses" className="text-sm font-semibold">See all programs →</Link>
+            </Reveal>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {courses.map((c) => (
@@ -143,8 +156,12 @@ export default function Index() {
       {/* Campus Tour */}
       <section id="campus" className="scroll-mt-20 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold tracking-tight">Campus Tour</h2>
-          <p className="mt-2 text-muted-foreground">Get a glimpse of classrooms, libraries, labs, hostels, and cultural/sports arenas.</p>
+          <Reveal>
+            <h2 className="text-3xl font-bold tracking-tight">Campus Tour</h2>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <p className="mt-2 text-muted-foreground">Get a glimpse of classrooms, libraries, labs, hostels, and cultural/sports arenas.</p>
+          </Reveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {campusMedia.map((m) => (
               <motion.figure key={m.cat} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="group overflow-hidden rounded-xl border bg-card shadow-sm">
@@ -153,24 +170,28 @@ export default function Index() {
               </motion.figure>
             ))}
           </div>
-          <div className="mt-8 overflow-hidden rounded-xl border shadow-sm">
-            <div className="aspect-video w-full">
-              <iframe
-                className="h-full w-full"
-                src="https://www.youtube.com/embed/9No-FiEInLA?rel=0"
-                title="Amity University Patna Campus Tour"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
+          <Reveal delay={0.05}>
+            <div className="mt-8 overflow-hidden rounded-xl border shadow-sm">
+              <div className="aspect-video w-full">
+                <iframe
+                  className="h-full w-full"
+                  src="https://www.youtube.com/embed/9No-FiEInLA?rel=0"
+                  title="Amity University Patna Campus Tour"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Events */}
       <section id="events" className="scroll-mt-20 py-16 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold tracking-tight">Events</h2>
+          <Reveal>
+            <h2 className="text-3xl font-bold tracking-tight">Events</h2>
+          </Reveal>
           <div className="mt-8 grid gap-10 lg:grid-cols-2">
             <div>
               <h3 className="font-semibold text-primary">Upcoming</h3>
@@ -195,24 +216,28 @@ export default function Index() {
       {/* Admissions CTA */}
       <section id="admissions" className="scroll-mt-20 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-6 overflow-hidden rounded-2xl border bg-gradient-to-br from-primary/90 to-primary p-8 text-primary-foreground shadow-lg md:grid-cols-3">
-            <div className="md:col-span-2">
-              <h2 className="text-2xl font-bold">Admissions Open 2025</h2>
-              <p className="mt-1 text-primary-foreground/90">Scholarships available for meritorious students. Limited seats!</p>
+          <Reveal>
+            <div className="grid items-center gap-6 overflow-hidden rounded-2xl border bg-gradient-to-br from-primary/90 to-primary p-8 text-primary-foreground shadow-lg md:grid-cols-3">
+              <div className="md:col-span-2">
+                <h2 className="text-2xl font-bold">Admissions Open 2025</h2>
+                <p className="mt-1 text-primary-foreground/90">Scholarships available for meritorious students. Limited seats!</p>
+              </div>
+              <div className="flex md:justify-end">
+                <a href="mailto:admissions.patna@amity.edu" className="inline-flex items-center justify-center rounded-md bg-secondary px-5 py-3 text-sm font-semibold text-secondary-foreground shadow hover:bg-secondary/90">
+                  Start Your Application
+                </a>
+              </div>
             </div>
-            <div className="flex md:justify-end">
-              <a href="mailto:admissions.patna@amity.edu" className="inline-flex items-center justify-center rounded-md bg-secondary px-5 py-3 text-sm font-semibold text-secondary-foreground shadow hover:bg-secondary/90">
-                Start Your Application
-              </a>
-            </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Contact */}
       <section id="contact" className="scroll-mt-20 py-16 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold tracking-tight">Contact Us</h2>
+          <Reveal>
+            <h2 className="text-3xl font-bold tracking-tight">Contact Us</h2>
+          </Reveal>
           <div className="mt-6 grid gap-6 lg:grid-cols-2">
             <div className="grid gap-3 text-sm">
               <a href="tel:+919999999999" className="inline-flex items-center gap-2">
@@ -229,15 +254,17 @@ export default function Index() {
               </a>
               <p className="text-muted-foreground mt-2">Monday to Friday, 9:00 AM – 6:00 PM</p>
             </div>
-            <div className="overflow-hidden rounded-xl border shadow-sm">
-              <iframe
-                title="Amity University Patna Map"
-                src="https://www.google.com/maps?q=Amity%20University%20Patna&output=embed"
-                className="h-64 w-full md:h-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            <Reveal direction="left" delay={0.05}>
+              <div className="overflow-hidden rounded-xl border shadow-sm">
+                <iframe
+                  title="Amity University Patna Map"
+                  src="https://www.google.com/maps?q=Amity%20University%20Patna&output=embed"
+                  className="h-64 w-full md:h-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -245,7 +272,9 @@ export default function Index() {
       {/* Resources */}
       <section id="resources" className="scroll-mt-20 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold tracking-tight">Student Resources</h2>
+          <Reveal>
+            <h2 className="text-3xl font-bold tracking-tight">Student Resources</h2>
+          </Reveal>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { title: "LMS Portal", href: "#" },
@@ -253,10 +282,10 @@ export default function Index() {
               { title: "Exam Cell", href: "#" },
               { title: "Counseling & Support", href: "#" },
             ].map((r) => (
-              <a key={r.title} href={r.href} className="rounded-xl border p-5 shadow-sm hover:shadow-md">
+              <motion.a key={r.title} href={r.href} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.35 }} className="rounded-xl border p-5 shadow-sm hover:shadow-md">
                 <div className="font-semibold">{r.title}</div>
                 <div className="text-xs mt-1 text-muted-foreground">Secure login required</div>
-              </a>
+              </motion.a>
             ))}
           </div>
         </div>

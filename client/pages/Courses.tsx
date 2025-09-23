@@ -31,16 +31,23 @@ const programs = [
 export default function Courses() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-      <header className="max-w-3xl">
+      <motion.header initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="max-w-3xl">
         <h1 className="text-4xl font-extrabold tracking-tight">Courses Offered</h1>
         <p className="mt-3 text-muted-foreground">
           Explore comprehensive programs designed with industry inputs, hands-on learning, internships, and career support. Each program focuses on building strong fundamentals and future-ready skills.
         </p>
-      </header>
+      </motion.header>
 
       <div className="mt-10 grid gap-8">
-        {programs.map((group) => (
-          <section key={group.category} className="rounded-2xl border bg-card p-6 shadow-sm">
+        {programs.map((group, gi) => (
+          <motion.section
+            key={group.category}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: gi * 0.05 }}
+            className="rounded-2xl border bg-card p-6 shadow-sm"
+          >
             <h2 className="text-2xl font-bold text-primary">{group.category}</h2>
             <div className="mt-4 grid gap-4 md:grid-cols-2">
               {group.items.map((p) => (
@@ -57,11 +64,18 @@ export default function Courses() {
                 </motion.div>
               ))}
             </div>
-          </section>
+          </motion.section>
         ))}
       </div>
 
-      <div id="admissions-cta" className="mt-12 overflow-hidden rounded-2xl border bg-gradient-to-br from-secondary to-secondary/80 p-6 text-secondary-foreground shadow">
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.45 }}
+        id="admissions-cta"
+        className="mt-12 overflow-hidden rounded-2xl border bg-gradient-to-br from-secondary to-secondary/80 p-6 text-secondary-foreground shadow"
+      >
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div>
             <div className="text-lg font-semibold">Need help choosing a program?</div>
@@ -71,7 +85,7 @@ export default function Courses() {
             Contact Admissions
           </a>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
