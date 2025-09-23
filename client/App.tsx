@@ -29,6 +29,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToHash />
+        <ScrollProgress />
         <Header />
         <main className="min-h-[60vh]">
           <Routes>
