@@ -25,7 +25,9 @@ const schema = z.object({
 export const handleAdmissionsApply: RequestHandler = async (req, res) => {
   const parsed = schema.safeParse(req.body);
   if (!parsed.success) {
-    return res.status(400).json({ error: "Invalid form data", issues: parsed.error.flatten() });
+    return res
+      .status(400)
+      .json({ error: "Invalid form data", issues: parsed.error.flatten() });
   }
 
   const {
@@ -37,7 +39,13 @@ export const handleAdmissionsApply: RequestHandler = async (req, res) => {
     SMTP_SECURE,
   } = process.env as Record<string, string | undefined>;
 
-  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !ADMISSIONS_INBOX) {
+  if (
+    !SMTP_HOST ||
+    !SMTP_PORT ||
+    !SMTP_USER ||
+    !SMTP_PASS ||
+    !ADMISSIONS_INBOX
+  ) {
     return res.status(500).json({
       error:
         "Email is not configured. Please set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS and ADMISSIONS_INBOX environment variables.",
@@ -53,7 +61,8 @@ export const handleAdmissionsApply: RequestHandler = async (req, res) => {
 
   const data = parsed.data;
   const subject = `New Admission Application - ${data.fullName} (${data.level})`;
-  const text = `New admission application received.\n\n` +
+  const text =
+    `New admission application received.\n\n` +
     `Name: ${data.fullName}\n` +
     `Email: ${data.email}\n` +
     `Phone: ${data.phone}\n` +

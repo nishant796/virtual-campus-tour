@@ -15,10 +15,10 @@ export default function Reveal({
     direction === "up"
       ? { opacity: 0, y: offset }
       : direction === "down"
-      ? { opacity: 0, y: -offset }
-      : direction === "left"
-      ? { opacity: 0, x: offset }
-      : { opacity: 0, x: -offset };
+        ? { opacity: 0, y: -offset }
+        : direction === "left"
+          ? { opacity: 0, x: offset }
+          : { opacity: 0, x: -offset };
 
   return (
     <motion.div

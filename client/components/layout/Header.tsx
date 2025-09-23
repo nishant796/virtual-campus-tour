@@ -30,13 +30,19 @@ export default function Header() {
             <div className="font-extrabold tracking-tight text-primary text-base sm:text-lg">
               Amity University
             </div>
-            <div className="text-xs sm:text-sm text-muted-foreground">Patna Campus</div>
+            <div className="text-xs sm:text-sm text-muted-foreground">
+              Patna Campus
+            </div>
           </div>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
-            <NavItem key={item.label} to={item.to} isActive={location.pathname === item.to}>
+            <NavItem
+              key={item.label}
+              to={item.to}
+              isActive={location.pathname === item.to}
+            >
               {item.label}
             </NavItem>
           ))}
@@ -55,9 +61,19 @@ export default function Header() {
               xmlns="http://www.w3.org/2000/svg"
             >
               {open ? (
-                <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <path
+                  d="M6 18L18 6M6 6l12 12"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
               ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <path
+                  d="M4 6h16M4 12h16M4 18h16"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
               )}
             </svg>
           </button>
@@ -79,14 +95,21 @@ export default function Header() {
   );
 }
 
-function NavItem({ to, children }: { to: string; children: React.ReactNode; isActive?: boolean }) {
+function NavItem({
+  to,
+  children,
+}: {
+  to: string;
+  children: React.ReactNode;
+  isActive?: boolean;
+}) {
   return (
     <NavLink
       to={to}
       className={({ isActive }) =>
         cn(
           "px-3 py-2 text-sm rounded-md transition-colors hover:text-primary hover:bg-primary/10",
-          isActive && "text-primary bg-primary/10"
+          isActive && "text-primary bg-primary/10",
         )
       }
     >
@@ -95,7 +118,15 @@ function NavItem({ to, children }: { to: string; children: React.ReactNode; isAc
   );
 }
 
-function MobileNavItem({ to, onClick, children }: { to: string; onClick?: () => void; children: React.ReactNode }) {
+function MobileNavItem({
+  to,
+  onClick,
+  children,
+}: {
+  to: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+}) {
   return (
     <NavLink
       to={to}
@@ -103,7 +134,7 @@ function MobileNavItem({ to, onClick, children }: { to: string; onClick?: () => 
       className={({ isActive }) =>
         cn(
           "px-3 py-2 text-sm rounded-md transition-colors hover:text-primary hover:bg-primary/10",
-          isActive && "text-primary bg-primary/10"
+          isActive && "text-primary bg-primary/10",
         )
       }
     >

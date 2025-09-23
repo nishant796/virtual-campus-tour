@@ -20,7 +20,10 @@ export function createServer() {
   app.get("/api/demo", handleDemo);
 
   // Admissions
-  app.post("/api/admissions/apply", (await import("./routes/admissions")).handleAdmissionsApply);
+  app.post(
+    "/api/admissions/apply",
+    (await import("./routes/admissions")).handleAdmissionsApply,
+  );
 
   return app;
 }

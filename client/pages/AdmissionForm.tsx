@@ -43,7 +43,10 @@ export default function AdmissionForm() {
     watch,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<FormData>({ resolver: zodResolver(schema), defaultValues: { level: "UG", gender: "Male", country: "India" } });
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+    defaultValues: { level: "UG", gender: "Male", country: "India" },
+  });
 
   const level = watch("level");
   const programs = level === "UG" ? ugPrograms : pgPrograms;
@@ -68,17 +71,30 @@ export default function AdmissionForm() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10">
-      <h1 className="text-3xl font-extrabold tracking-tight">Admission Application Form</h1>
-      <p className="mt-2 text-muted-foreground">Fill in the details carefully. Our admissions team will contact you shortly.</p>
+      <h1 className="text-3xl font-extrabold tracking-tight">
+        Admission Application Form
+      </h1>
+      <p className="mt-2 text-muted-foreground">
+        Fill in the details carefully. Our admissions team will contact you
+        shortly.
+      </p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-8 grid gap-6">
         <section className="grid gap-4 rounded-xl border p-5">
           <h2 className="text-lg font-semibold">Personal Information</h2>
           <div className="grid gap-4 md:grid-cols-2">
-            <Field label="Full Name" error={errors.fullName?.message}><input {...register("fullName")} className="input" /></Field>
-            <Field label="Email" error={errors.email?.message}><input type="email" {...register("email")} className="input" /></Field>
-            <Field label="Phone" error={errors.phone?.message}><input {...register("phone")} className="input" /></Field>
-            <Field label="Date of Birth" error={errors.dob?.message}><input type="date" {...register("dob")} className="input" /></Field>
+            <Field label="Full Name" error={errors.fullName?.message}>
+              <input {...register("fullName")} className="input" />
+            </Field>
+            <Field label="Email" error={errors.email?.message}>
+              <input type="email" {...register("email")} className="input" />
+            </Field>
+            <Field label="Phone" error={errors.phone?.message}>
+              <input {...register("phone")} className="input" />
+            </Field>
+            <Field label="Date of Birth" error={errors.dob?.message}>
+              <input type="date" {...register("dob")} className="input" />
+            </Field>
             <Field label="Gender" error={errors.gender?.message}>
               <select {...register("gender")} className="input">
                 <option>Male</option>
@@ -92,11 +108,29 @@ export default function AdmissionForm() {
         <section className="grid gap-4 rounded-xl border p-5">
           <h2 className="text-lg font-semibold">Contact Details</h2>
           <div className="grid gap-4 md:grid-cols-2">
-            <Field label="Address" error={errors.address?.message} className="md:col-span-2"><input {...register("address")} className="input" /></Field>
-            <Field label="City" error={errors.city?.message}><input {...register("city")} className="input" /></Field>
-            <Field label="State" error={errors.state?.message}><input {...register("state")} className="input" /></Field>
-            <Field label="ZIP/Postal Code" error={errors.zip?.message}><input {...register("zip")} className="input" /></Field>
-            <Field label="Country" error={errors.country?.message}><input defaultValue="India" {...register("country")} className="input" /></Field>
+            <Field
+              label="Address"
+              error={errors.address?.message}
+              className="md:col-span-2"
+            >
+              <input {...register("address")} className="input" />
+            </Field>
+            <Field label="City" error={errors.city?.message}>
+              <input {...register("city")} className="input" />
+            </Field>
+            <Field label="State" error={errors.state?.message}>
+              <input {...register("state")} className="input" />
+            </Field>
+            <Field label="ZIP/Postal Code" error={errors.zip?.message}>
+              <input {...register("zip")} className="input" />
+            </Field>
+            <Field label="Country" error={errors.country?.message}>
+              <input
+                defaultValue="India"
+                {...register("country")}
+                className="input"
+              />
+            </Field>
           </div>
         </section>
 
@@ -112,39 +146,72 @@ export default function AdmissionForm() {
             <Field label="Program" error={errors.program?.message}>
               <select {...register("program")} className="input">
                 {programs.map((p) => (
-                  <option key={p} value={p}>{p}</option>
+                  <option key={p} value={p}>
+                    {p}
+                  </option>
                 ))}
               </select>
             </Field>
-            <Field label="Previous Education" error={errors.previousEducation?.message} className="md:col-span-2"><input {...register("previousEducation")} className="input" placeholder="e.g., 12th CBSE 85% or BCA 8.2 CGPA" /></Field>
-            <Field label="Year of Passing" error={errors.yearOfPassing?.message}><input {...register("yearOfPassing")} className="input" /></Field>
+            <Field
+              label="Previous Education"
+              error={errors.previousEducation?.message}
+              className="md:col-span-2"
+            >
+              <input
+                {...register("previousEducation")}
+                className="input"
+                placeholder="e.g., 12th CBSE 85% or BCA 8.2 CGPA"
+              />
+            </Field>
+            <Field
+              label="Year of Passing"
+              error={errors.yearOfPassing?.message}
+            >
+              <input {...register("yearOfPassing")} className="input" />
+            </Field>
           </div>
         </section>
 
         <section className="grid gap-4 rounded-xl border p-5">
           <h2 className="text-lg font-semibold">Guardian Details</h2>
           <div className="grid gap-4 md:grid-cols-2">
-            <Field label="Guardian Name" error={errors.guardianName?.message}><input {...register("guardianName")} className="input" /></Field>
-            <Field label="Guardian Phone" error={errors.guardianPhone?.message}><input {...register("guardianPhone")} className="input" /></Field>
+            <Field label="Guardian Name" error={errors.guardianName?.message}>
+              <input {...register("guardianName")} className="input" />
+            </Field>
+            <Field label="Guardian Phone" error={errors.guardianPhone?.message}>
+              <input {...register("guardianPhone")} className="input" />
+            </Field>
           </div>
         </section>
 
         <section className="grid gap-4 rounded-xl border p-5">
           <h2 className="text-lg font-semibold">Statement of Purpose</h2>
-          <Field label="Why do you want to join Amity University Patna?" error={errors.statement?.message}>
+          <Field
+            label="Why do you want to join Amity University Patna?"
+            error={errors.statement?.message}
+          >
             <textarea rows={6} {...register("statement")} className="input" />
           </Field>
         </section>
 
         <div className="flex items-center justify-between">
-          <div className="text-xs text-muted-foreground">By submitting, you agree to our processing your information for admissions.</div>
-          <button disabled={isSubmitting} className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow hover:bg-primary/90 disabled:opacity-50">
+          <div className="text-xs text-muted-foreground">
+            By submitting, you agree to our processing your information for
+            admissions.
+          </div>
+          <button
+            disabled={isSubmitting}
+            className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow hover:bg-primary/90 disabled:opacity-50"
+          >
             {isSubmitting ? "Submitting..." : "Submit Application"}
           </button>
         </div>
 
         {submitted && (
-          <div className="rounded-md border bg-muted/30 p-4 text-sm">Thank you! Your application has been submitted. We will reach out via email/phone.</div>
+          <div className="rounded-md border bg-muted/30 p-4 text-sm">
+            Thank you! Your application has been submitted. We will reach out
+            via email/phone.
+          </div>
         )}
       </form>
 
@@ -155,7 +222,17 @@ export default function AdmissionForm() {
   );
 }
 
-function Field({ label, error, children, className }: { label: string; error?: string; children: React.ReactNode; className?: string }) {
+function Field({
+  label,
+  error,
+  children,
+  className,
+}: {
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <label className={`grid gap-1 ${className || ""}`}>
       <span className="text-sm font-medium">{label}</span>
