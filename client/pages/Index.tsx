@@ -1,62 +1,278 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
+const heroImages = [
+  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1511452885600-a3d2c9148a31?q=80&w=1600&auto=format&fit=crop",
+];
+
+const courses = [
+  { title: "B.Tech (CSE)", desc: "AI, ML, Data Science, Cybersecurity" },
+  { title: "BBA", desc: "Business Analytics, Marketing, Finance" },
+  { title: "BCA", desc: "Full-Stack Development, Cloud, DevOps" },
+  { title: "MBA", desc: "Leadership, Strategy, Entrepreneurship" },
+  { title: "BA (H) Psychology", desc: "Counseling, Research, HR" },
+  { title: "B.Sc (IT)", desc: "Networks, Programming, Systems" },
+];
+
+const campusMedia = [
+  { cat: "Classrooms", url: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop" },
+  { cat: "Library", url: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" },
+  { cat: "Labs", url: "https://images.unsplash.com/photo-1551281044-8a5d2f6df31a?q=80&w=1200&auto=format&fit=crop" },
+  { cat: "Hostels", url: "https://images.unsplash.com/photo-1505691723518-36a5ac3b2dba?q=80&w=1200&auto=format&fit=crop" },
+  { cat: "Sports", url: "https://images.unsplash.com/photo-1471295253337-3ceaaedca402?q=80&w=1200&auto=format&fit=crop" },
+  { cat: "Culture", url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop" },
+];
+
+const events = {
+  upcoming: [
+    {
+      title: "Tech Fest 2025",
+      date: "Nov 18, 2025",
+      media: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      title: "Admissions Open House",
+      date: "Dec 05, 2025",
+      media: "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1200&auto=format&fit=crop",
+    },
+  ],
+  past: [
+    {
+      title: "Cultural Night 2024",
+      date: "Apr 02, 2024",
+      media: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      title: "Sports Meet 2024",
+      date: "Feb 10, 2024",
+      media: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1200&auto=format&fit=crop",
+    },
+  ],
+};
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
-
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
-      </div>
+    <div className="min-h-screen">
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/15 via-transparent to-background" />
+          <div className="absolute -left-1/4 top-[-10%] h-[50rem] w-[50rem] rounded-full bg-secondary/20 blur-3xl" />
+          <div className="absolute -right-1/4 bottom-[-20%] h-[45rem] w-[45rem] rounded-full bg-primary/20 blur-3xl" />
+        </div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+              <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary ring-1 ring-primary/20">
+                Welcome to Amity University Patna
+              </span>
+              <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-primary sm:text-5xl lg:text-6xl">
+                Explore Our Vibrant Campus & Academic Excellence
+              </h1>
+              <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-prose">
+                Discover world-class programs, state-of-the-art infrastructure, and a student-first environment with rich cultural and sports opportunities.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <a href="#admissions" className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow hover:bg-primary/90">
+                  Apply for Admissions
+                </a>
+                <a href="#campus" className="inline-flex items-center justify-center rounded-md bg-secondary px-5 py-3 text-sm font-semibold text-secondary-foreground shadow hover:bg-secondary/90">
+                  Take a Campus Tour
+                </a>
+                <Link to="/courses" className="inline-flex items-center justify-center rounded-md border px-5 py-3 text-sm font-semibold hover:bg-muted">
+                  View Courses
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }} className="grid gap-4 sm:grid-cols-2">
+              {heroImages.map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt={`Amity Patna campus ${i + 1}`}
+                  className={"h-44 w-full rounded-xl object-cover shadow-lg sm:h-56 lg:h-64 " + (i % 3 === 0 ? "sm:col-span-2" : "")}
+                  loading="lazy"
+                />
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="scroll-mt-20 py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="grid gap-8 lg:grid-cols-3">
+            <div className="lg:col-span-1">
+              <h2 className="text-3xl font-bold tracking-tight">About Our Campus</h2>
+              <p className="mt-2 text-muted-foreground">Modern infrastructure | Experienced faculty | Industry-aligned curriculum</p>
+            </div>
+            <div className="lg:col-span-2 text-muted-foreground leading-relaxed">
+              <p>
+                Amity University Patna offers a vibrant academic ecosystem with cutting-edge labs, an extensive library, comfortable hostels, and dedicated spaces for sports and cultural activities. Our programs are designed to nurture leadership, research aptitude, and real-world skills.
+              </p>
+              <p className="mt-4">
+                We emphasize interdisciplinary learning, global exposure, and holistic development. Join a community that inspires innovation and shapes leaders of tomorrow.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Courses preview */}
+      <section id="courses" className="scroll-mt-20 py-16 bg-muted/30">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-end justify-between gap-4">
+            <h2 className="text-3xl font-bold tracking-tight">Courses Offered</h2>
+            <Link to="/courses" className="text-sm font-semibold">See all programs →</Link>
+          </div>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {courses.map((c) => (
+              <motion.div key={c.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="rounded-xl border bg-card p-5 shadow-sm hover:shadow-md">
+                <h3 className="font-semibold text-primary">{c.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{c.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Campus Tour */}
+      <section id="campus" className="scroll-mt-20 py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold tracking-tight">Campus Tour</h2>
+          <p className="mt-2 text-muted-foreground">Get a glimpse of classrooms, libraries, labs, hostels, and cultural/sports arenas.</p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {campusMedia.map((m) => (
+              <motion.figure key={m.cat} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="group overflow-hidden rounded-xl border bg-card shadow-sm">
+                <img src={m.url} alt={m.cat} className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                <figcaption className="p-3 text-sm text-muted-foreground">{m.cat}</figcaption>
+              </motion.figure>
+            ))}
+          </div>
+          <div className="mt-8 overflow-hidden rounded-xl border shadow-sm">
+            <div className="aspect-video w-full">
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube.com/embed/9No-FiEInLA?rel=0"
+                title="Amity University Patna Campus Tour"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Events */}
+      <section id="events" className="scroll-mt-20 py-16 bg-muted/30">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold tracking-tight">Events</h2>
+          <div className="mt-8 grid gap-10 lg:grid-cols-2">
+            <div>
+              <h3 className="font-semibold text-primary">Upcoming</h3>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {events.upcoming.map((e) => (
+                  <EventCard key={e.title} title={e.title} date={e.date} media={e.media} />
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="font-semibold text-primary">Past</h3>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {events.past.map((e) => (
+                  <EventCard key={e.title} title={e.title} date={e.date} media={e.media} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Admissions CTA */}
+      <section id="admissions" className="scroll-mt-20 py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-6 overflow-hidden rounded-2xl border bg-gradient-to-br from-primary/90 to-primary p-8 text-primary-foreground shadow-lg md:grid-cols-3">
+            <div className="md:col-span-2">
+              <h2 className="text-2xl font-bold">Admissions Open 2025</h2>
+              <p className="mt-1 text-primary-foreground/90">Scholarships available for meritorious students. Limited seats!</p>
+            </div>
+            <div className="flex md:justify-end">
+              <a href="mailto:admissions.patna@amity.edu" className="inline-flex items-center justify-center rounded-md bg-secondary px-5 py-3 text-sm font-semibold text-secondary-foreground shadow hover:bg-secondary/90">
+                Start Your Application
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="scroll-mt-20 py-16 bg-muted/30">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold tracking-tight">Contact Us</h2>
+          <div className="mt-6 grid gap-6 lg:grid-cols-2">
+            <div className="grid gap-3 text-sm">
+              <a href="tel:+919999999999" className="inline-flex items-center gap-2">
+                <span className="font-semibold">Phone:</span>
+                <span className="text-primary">+91 99999 99999</span>
+              </a>
+              <a href="mailto:admissions.patna@amity.edu" className="inline-flex items-center gap-2">
+                <span className="font-semibold">Email:</span>
+                <span className="text-primary">admissions.patna@amity.edu</span>
+              </a>
+              <a href="https://maps.google.com/?q=Amity+University+Patna" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2">
+                <span className="font-semibold">Address:</span>
+                <span className="text-primary">Patna, Bihar, India</span>
+              </a>
+              <p className="text-muted-foreground mt-2">Monday to Friday, 9:00 AM – 6:00 PM</p>
+            </div>
+            <div className="overflow-hidden rounded-xl border shadow-sm">
+              <iframe
+                title="Amity University Patna Map"
+                src="https://www.google.com/maps?q=Amity%20University%20Patna&output=embed"
+                className="h-64 w-full md:h-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Resources */}
+      <section id="resources" className="scroll-mt-20 py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold tracking-tight">Student Resources</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { title: "LMS Portal", href: "#" },
+              { title: "Library Access", href: "#" },
+              { title: "Exam Cell", href: "#" },
+              { title: "Counseling & Support", href: "#" },
+            ].map((r) => (
+              <a key={r.title} href={r.href} className="rounded-xl border p-5 shadow-sm hover:shadow-md">
+                <div className="font-semibold">{r.title}</div>
+                <div className="text-xs mt-1 text-muted-foreground">Secure login required</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
+  );
+}
+
+function EventCard({ title, date, media }: { title: string; date: string; media: string }) {
+  return (
+    <motion.article initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="overflow-hidden rounded-xl border bg-card shadow-sm">
+      <img src={media} alt={title} className="h-40 w-full object-cover" loading="lazy" />
+      <div className="p-4">
+        <h4 className="font-semibold">{title}</h4>
+        <p className="text-xs text-muted-foreground">{date}</p>
+      </div>
+    </motion.article>
   );
 }
