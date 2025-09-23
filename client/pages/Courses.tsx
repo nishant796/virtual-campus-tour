@@ -16,14 +16,7 @@ const programs = [
     items: [
       { name: "MBA", details: "Concentrations: Strategy, Entrepreneurship, Analytics" },
       { name: "MCA", details: "Advanced Software Engineering, Cloud & Security" },
-    ],
-  },
-  {
-    category: "Diploma & Certificate",
-    items: [
-      { name: "Data Analytics", details: "Python, Visualization, Machine Learning" },
-      { name: "Digital Marketing", details: "SEO/SEM, Performance Marketing, Analytics" },
-      { name: "Cloud Computing", details: "AWS/Azure Fundamentals, DevOps" },
+      { name: "M.Sc (Data Science)", details: "Machine Learning, Big Data, Visualization" },
     ],
   },
 ];
