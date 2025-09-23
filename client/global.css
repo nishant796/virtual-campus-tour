@@ -104,7 +104,15 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+  }
+
+  a {
+    @apply text-foreground/90 underline-offset-4 hover:text-primary hover:underline;
   }
 }
