@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 
-export function createServer() {
+export async function createServer() {
   const app = express();
 
   // Middleware
@@ -20,10 +20,8 @@ export function createServer() {
   app.get("/api/demo", handleDemo);
 
   // Admissions
-  app.post(
-    "/api/admissions/apply",
-    (await import("./routes/admissions")).handleAdmissionsApply,
-  );
+  const { handleAdmissionsApply } = await import("./routes/admissions");
+  app.post("/api/admissions/apply", handleAdmissionsApply);
 
   return app;
 }
