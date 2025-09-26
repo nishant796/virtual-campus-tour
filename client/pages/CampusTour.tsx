@@ -4,24 +4,67 @@ import { motion } from "framer-motion";
 type MediaItem = { cat: string; url: string; title?: string };
 
 const imageItems: MediaItem[] = [
-  { cat: "Classrooms", url: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1400&auto=format&fit=crop" },
-  { cat: "Library", url: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop" },
-  { cat: "Labs", url: "https://images.unsplash.com/photo-1551281044-8a5d2f6df31a?q=80&w=1400&auto=format&fit=crop" },
-  { cat: "Hostels", url: "https://images.unsplash.com/photo-1505691723518-36a5ac3b2dba?q=80&w=1400&auto=format&fit=crop" },
-  { cat: "Sports", url: "https://images.unsplash.com/photo-1471295253337-3ceaaedca402?q=80&w=1400&auto=format&fit=crop" },
-  { cat: "Culture", url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1400&auto=format&fit=crop" },
-  { cat: "Classrooms", url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop" },
-  { cat: "Labs", url: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1400&auto=format&fit=crop" },
+  {
+    cat: "Classrooms",
+    url: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1400&auto=format&fit=crop",
+  },
+  {
+    cat: "Library",
+    url: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop",
+  },
+  {
+    cat: "Labs",
+    url: "https://images.unsplash.com/photo-1551281044-8a5d2f6df31a?q=80&w=1400&auto=format&fit=crop",
+  },
+  {
+    cat: "Hostels",
+    url: "https://images.unsplash.com/photo-1505691723518-36a5ac3b2dba?q=80&w=1400&auto=format&fit=crop",
+  },
+  {
+    cat: "Sports",
+    url: "https://images.unsplash.com/photo-1471295253337-3ceaaedca402?q=80&w=1400&auto=format&fit=crop",
+  },
+  {
+    cat: "Culture",
+    url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1400&auto=format&fit=crop",
+  },
+  {
+    cat: "Classrooms",
+    url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop",
+  },
+  {
+    cat: "Labs",
+    url: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1400&auto=format&fit=crop",
+  },
 ];
 
 const videoItems: MediaItem[] = [
-  { cat: "Walkthrough", url: "https://media.w3.org/2010/05/sintel/trailer.mp4", title: "Campus Walkthrough" },
-  { cat: "Student Life", url: "https://media.w3.org/2010/05/bunny/trailer.mp4", title: "Student Life Highlights" },
-  { cat: "Facilities", url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", title: "Sports Complex" },
-  { cat: "Facilities", url: "https://media.w3.org/2010/05/video/movie_300.mp4", title: "Library & Labs" },
+  {
+    cat: "Walkthrough",
+    url: "https://media.w3.org/2010/05/sintel/trailer.mp4",
+    title: "Campus Walkthrough",
+  },
+  {
+    cat: "Student Life",
+    url: "https://media.w3.org/2010/05/bunny/trailer.mp4",
+    title: "Student Life Highlights",
+  },
+  {
+    cat: "Facilities",
+    url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    title: "Sports Complex",
+  },
+  {
+    cat: "Facilities",
+    url: "https://media.w3.org/2010/05/video/movie_300.mp4",
+    title: "Library & Labs",
+  },
 ];
 
-const imageCategories = ["All", ...Array.from(new Set(imageItems.map((i) => i.cat)))];
+const imageCategories = [
+  "All",
+  ...Array.from(new Set(imageItems.map((i) => i.cat))),
+];
 
 export default function CampusTour() {
   const [tab, setTab] = useState<"images" | "videos">("images");
@@ -39,9 +82,13 @@ export default function CampusTour() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl font-extrabold tracking-tight">Virtual Campus Tour</h1>
+        <h1 className="text-4xl font-extrabold tracking-tight">
+          Virtual Campus Tour
+        </h1>
         <p className="mt-2 text-muted-foreground max-w-prose">
-          Explore Amity University Patna through curated galleries of images and videos across classrooms, labs, library, hostels, sports and cultural spaces.
+          Explore Amity University Patna through curated galleries of images and
+          videos across classrooms, labs, library, hostels, sports and cultural
+          spaces.
         </p>
       </motion.header>
 
@@ -68,7 +115,9 @@ export default function CampusTour() {
                 key={c}
                 onClick={() => setCat(c)}
                 className={`rounded-full border px-4 py-1.5 text-xs sm:text-sm ${
-                  cat === c ? "bg-primary text-primary-foreground" : "hover:bg-muted"
+                  cat === c
+                    ? "bg-primary text-primary-foreground"
+                    : "hover:bg-muted"
                 }`}
               >
                 {c}
@@ -116,7 +165,9 @@ export default function CampusTour() {
                   <source src={v.url} type="video/mp4" />
                 </video>
               </div>
-              <div className="p-3 text-sm text-muted-foreground">{v.title || "Campus Video"}</div>
+              <div className="p-3 text-sm text-muted-foreground">
+                {v.title || "Campus Video"}
+              </div>
             </motion.article>
           ))}
         </section>

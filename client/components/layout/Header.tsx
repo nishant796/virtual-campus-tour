@@ -19,7 +19,10 @@ export default function Header() {
   const location = useLocation();
 
   const isActiveTo = (to: string) => {
-    if (to === "/") return location.pathname === "/" && (!location.hash || location.hash === "");
+    if (to === "/")
+      return (
+        location.pathname === "/" && (!location.hash || location.hash === "")
+      );
     if (to.startsWith("/#")) {
       const hash = to.slice(1); // "#section"
       return location.pathname === "/" && location.hash === hash;
@@ -62,7 +65,11 @@ export default function Header() {
 
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
-            <NavItem key={item.label} to={item.to} isActive={isActiveTo(item.to)}>
+            <NavItem
+              key={item.label}
+              to={item.to}
+              isActive={isActiveTo(item.to)}
+            >
               {item.label}
             </NavItem>
           ))}

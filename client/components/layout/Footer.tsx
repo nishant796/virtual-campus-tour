@@ -24,11 +24,51 @@ export default function Footer() {
             research, innovation and holistic development across disciplines.
           </p>
           <div className="mt-4 flex items-center gap-3 text-muted-foreground">
-            <a aria-label="Facebook" href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Facebook size={18} /></a>
-            <a aria-label="Instagram" href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Instagram size={18} /></a>
-            <a aria-label="Twitter" href="https://x.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Twitter size={18} /></a>
-            <a aria-label="LinkedIn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Linkedin size={18} /></a>
-            <a aria-label="YouTube" href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Youtube size={18} /></a>
+            <a
+              aria-label="Facebook"
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-primary"
+            >
+              <Facebook size={18} />
+            </a>
+            <a
+              aria-label="Instagram"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-primary"
+            >
+              <Instagram size={18} />
+            </a>
+            <a
+              aria-label="Twitter"
+              href="https://x.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-primary"
+            >
+              <Twitter size={18} />
+            </a>
+            <a
+              aria-label="LinkedIn"
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-primary"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              aria-label="YouTube"
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-primary"
+            >
+              <Youtube size={18} />
+            </a>
           </div>
         </div>
         <div>

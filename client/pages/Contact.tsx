@@ -29,7 +29,10 @@ export default function Contact() {
 
       <div className="mt-8 grid gap-8 lg:grid-cols-2">
         <section className="grid gap-3 text-sm">
-          <a href="tel:+919999999999" className="inline-flex items-center gap-2">
+          <a
+            href="tel:+919999999999"
+            className="inline-flex items-center gap-2"
+          >
             <span className="font-semibold">Phone:</span>
             <span className="text-primary">+91 99999 99999</span>
           </a>
@@ -64,14 +67,19 @@ export default function Contact() {
         </section>
 
         <section>
-          <form onSubmit={onSubmit} className="grid gap-4 rounded-xl border p-5">
+          <form
+            onSubmit={onSubmit}
+            className="grid gap-4 rounded-xl border p-5"
+          >
             <h2 className="text-lg font-semibold">Send us a message</h2>
             <label className="grid gap-1">
               <span className="text-sm font-medium">Name</span>
               <input
                 className="input"
                 value={form.name}
-                onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, name: e.target.value }))
+                }
                 required
               />
             </label>
@@ -81,7 +89,9 @@ export default function Contact() {
                 className="input"
                 type="email"
                 value={form.email}
-                onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, email: e.target.value }))
+                }
                 required
               />
             </label>
@@ -91,7 +101,9 @@ export default function Contact() {
                 className="input"
                 rows={6}
                 value={form.message}
-                onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, message: e.target.value }))
+                }
                 required
               />
             </label>

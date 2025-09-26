@@ -363,7 +363,9 @@ export default function Index() {
           </Reveal>
           <Reveal delay={0.05}>
             <p className="mt-2 text-muted-foreground max-w-prose">
-              Experience a vibrant campus life with diverse clubs, cultural fests, sports, hackathons, and community initiatives that shape well-rounded individuals.
+              Experience a vibrant campus life with diverse clubs, cultural
+              fests, sports, hackathons, and community initiatives that shape
+              well-rounded individuals.
             </p>
           </Reveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -371,26 +373,22 @@ export default function Index() {
               {
                 title: "Clubs & Societies",
                 desc: "Tech, cultural, literary, photography and more",
-                url:
-                  "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop",
+                url: "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop",
               },
               {
                 title: "Sports & Fitness",
                 desc: "Cricket, football, basketball, gym & yoga",
-                url:
-                  "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1200&auto=format&fit=crop",
+                url: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1200&auto=format&fit=crop",
               },
               {
                 title: "Cultural Fests",
                 desc: "Annual festivals, concerts, and showcases",
-                url:
-                  "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop",
+                url: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop",
               },
               {
                 title: "Hostel Life",
                 desc: "Comfortable living with great community",
-                url:
-                  "https://images.unsplash.com/photo-1505691723518-36a5ac3b2dba?q=80&w=1200&auto=format&fit=crop",
+                url: "https://images.unsplash.com/photo-1505691723518-36a5ac3b2dba?q=80&w=1200&auto=format&fit=crop",
               },
             ].map((item) => (
               <motion.article

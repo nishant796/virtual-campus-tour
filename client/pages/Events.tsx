@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
 
-type Event = { title: string; date: string; media: string; description?: string };
+type Event = {
+  title: string;
+  date: string;
+  media: string;
+  description?: string;
+};
 
 const events = {
   upcoming: [
@@ -64,12 +69,19 @@ export default function Events() {
               transition={{ duration: 0.4 }}
               className="overflow-hidden rounded-xl border bg-card shadow-sm"
             >
-              <img src={e.media} alt={e.title} className="h-44 w-full object-cover" loading="lazy" />
+              <img
+                src={e.media}
+                alt={e.title}
+                className="h-44 w-full object-cover"
+                loading="lazy"
+              />
               <div className="p-4">
                 <div className="font-semibold">{e.title}</div>
                 <div className="text-xs text-muted-foreground">{e.date}</div>
                 {e.description && (
-                  <p className="mt-2 text-sm text-muted-foreground">{e.description}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {e.description}
+                  </p>
                 )}
                 <div className="mt-3">
                   <a
@@ -97,7 +109,12 @@ export default function Events() {
               transition={{ duration: 0.4 }}
               className="overflow-hidden rounded-xl border bg-card shadow-sm"
             >
-              <img src={e.media} alt={e.title} className="h-40 w-full object-cover" loading="lazy" />
+              <img
+                src={e.media}
+                alt={e.title}
+                className="h-40 w-full object-cover"
+                loading="lazy"
+              />
               <div className="p-4">
                 <div className="font-semibold">{e.title}</div>
                 <div className="text-xs text-muted-foreground">{e.date}</div>
