@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -22,6 +23,13 @@ export default function Footer() {
             A modern, student-first campus fostering academic excellence,
             research, innovation and holistic development across disciplines.
           </p>
+          <div className="mt-4 flex items-center gap-3 text-muted-foreground">
+            <a aria-label="Facebook" href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Facebook size={18} /></a>
+            <a aria-label="Instagram" href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Instagram size={18} /></a>
+            <a aria-label="Twitter" href="https://x.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Twitter size={18} /></a>
+            <a aria-label="LinkedIn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Linkedin size={18} /></a>
+            <a aria-label="YouTube" href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="hover:text-primary"><Youtube size={18} /></a>
+          </div>
         </div>
         <div>
           <h3 className="font-semibold text-foreground">Quick Links</h3>
@@ -29,6 +37,16 @@ export default function Footer() {
             <li>
               <Link to="/courses" className="hover:text-primary">
                 Courses
+              </Link>
+            </li>
+            <li>
+              <Link to="/campus-tour" className="hover:text-primary">
+                Campus Tour
+              </Link>
+            </li>
+            <li>
+              <Link to="/#student-life" className="hover:text-primary">
+                Student Life
               </Link>
             </li>
             <li>
