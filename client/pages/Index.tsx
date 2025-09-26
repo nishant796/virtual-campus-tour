@@ -355,6 +355,70 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Student Life */}
+      <section id="student-life" className="scroll-mt-20 py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <h2 className="text-3xl font-bold tracking-tight">Student Life</h2>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <p className="mt-2 text-muted-foreground max-w-prose">
+              Experience a vibrant campus life with diverse clubs, cultural fests, sports, hackathons, and community initiatives that shape well-rounded individuals.
+            </p>
+          </Reveal>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: "Clubs & Societies",
+                desc: "Tech, cultural, literary, photography and more",
+                url:
+                  "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop",
+              },
+              {
+                title: "Sports & Fitness",
+                desc: "Cricket, football, basketball, gym & yoga",
+                url:
+                  "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1200&auto=format&fit=crop",
+              },
+              {
+                title: "Cultural Fests",
+                desc: "Annual festivals, concerts, and showcases",
+                url:
+                  "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop",
+              },
+              {
+                title: "Hostel Life",
+                desc: "Comfortable living with great community",
+                url:
+                  "https://images.unsplash.com/photo-1505691723518-36a5ac3b2dba?q=80&w=1200&auto=format&fit=crop",
+              },
+            ].map((item) => (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className="overflow-hidden rounded-xl border bg-card shadow-sm"
+              >
+                <img
+                  src={item.url}
+                  alt={item.title}
+                  className="h-40 w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="p-4">
+                  <div className="font-semibold">{item.title}</div>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    {item.desc}
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Events */}
       <section id="events" className="scroll-mt-20 py-16 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
