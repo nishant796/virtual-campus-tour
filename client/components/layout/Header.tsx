@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { label: "Home", to: "/" },
   { label: "About", to: "/#about" },
-  { label: "Courses", to: "/courses" },
-  { label: "Campus Tour", to: "/campus-tour" },
+  { label: "Courses", to: "/#courses" },
+  { label: "Campus Tour", to: "/#campus" },
   { label: "Events", to: "/#events" },
   { label: "Admissions", to: "/#admissions" },
   { label: "Student Life", to: "/#student-life" },
@@ -17,6 +17,15 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  const isActiveTo = (to: string) => {
+    if (to === "/") return location.pathname === "/" && (!location.hash || location.hash === "");
+    if (to.startsWith("/#")) {
+      const hash = to.slice(1); // "#section"
+      return location.pathname === "/" && location.hash === hash;
+    }
+    return location.pathname.startsWith(to);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -53,7 +62,7 @@ export default function Header() {
 
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
-            <NavItem key={item.label} to={item.to}>
+            <NavItem key={item.label} to={item.to} isActive={isActiveTo(item.to)}>
               {item.label}
             </NavItem>
           ))}
@@ -94,7 +103,12 @@ export default function Header() {
         <div className="md:hidden border-t bg-white/95 dark:bg-background/95">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 grid gap-1">
             {navItems.map((item) => (
-              <MobileNavItem key={item.label} to={item.to} onClick={close}>
+              <MobileNavItem
+                key={item.label}
+                to={item.to}
+                onClick={close}
+                isActive={isActiveTo(item.to)}
+              >
                 {item.label}
               </MobileNavItem>
             ))}
@@ -108,6 +122,7 @@ export default function Header() {
 function NavItem({
   to,
   children,
+  isActive,
 }: {
   to: string;
   children: React.ReactNode;
@@ -116,12 +131,10 @@ function NavItem({
   return (
     <NavLink
       to={to}
-      className={({ isActive }) =>
-        cn(
-          "px-3 py-2 text-sm rounded-md transition-colors hover:text-primary hover:bg-primary/10",
-          isActive && "text-primary bg-primary/10",
-        )
-      }
+      className={cn(
+        "px-3 py-2 text-sm rounded-md transition-colors hover:text-primary hover:bg-primary/10",
+        isActive && "text-primary bg-primary/10",
+      )}
     >
       {children}
     </NavLink>
@@ -132,21 +145,21 @@ function MobileNavItem({
   to,
   onClick,
   children,
+  isActive,
 }: {
   to: string;
   onClick?: () => void;
   children: React.ReactNode;
+  isActive?: boolean;
 }) {
   return (
     <NavLink
       to={to}
       onClick={onClick}
-      className={({ isActive }) =>
-        cn(
-          "px-3 py-2 text-sm rounded-md transition-colors hover:text-primary hover:bg-primary/10",
-          isActive && "text-primary bg-primary/10",
-        )
-      }
+      className={cn(
+        "px-3 py-2 text-sm rounded-md transition-colors hover:text-primary hover:bg-primary/10",
+        isActive && "text-primary bg-primary/10",
+      )}
     >
       {children}
     </NavLink>
