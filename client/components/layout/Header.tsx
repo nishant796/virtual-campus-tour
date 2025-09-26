@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -6,21 +6,36 @@ const navItems = [
   { label: "Home", to: "/" },
   { label: "About", to: "/#about" },
   { label: "Courses", to: "/courses" },
-  { label: "Campus Tour", to: "/#campus" },
+  { label: "Campus Tour", to: "/campus-tour" },
   { label: "Events", to: "/#events" },
   { label: "Admissions", to: "/#admissions" },
+  { label: "Student Life", to: "/#student-life" },
   { label: "Contact", to: "/#contact" },
-  { label: "Student Resources", to: "/#resources" },
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const close = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-background/70">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full border-b backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-background/70 transition-all",
+        scrolled
+          ? "bg-white/90 shadow-sm dark:bg-background/80"
+          : "bg-white/70 dark:bg-background/60",
+      )}
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3" onClick={close}>
           <div className="h-9 w-9 rounded-md bg-primary text-primary-foreground grid place-items-center font-extrabold">
@@ -38,11 +53,7 @@ export default function Header() {
 
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
-            <NavItem
-              key={item.label}
-              to={item.to}
-              isActive={location.pathname === item.to}
-            >
+            <NavItem key={item.label} to={item.to}>
               {item.label}
             </NavItem>
           ))}
@@ -79,7 +90,6 @@ export default function Header() {
           </button>
         </div>
       </div>
-      {/* Mobile menu */}
       {open && (
         <div className="md:hidden border-t bg-white/95 dark:bg-background/95">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 grid gap-1">
